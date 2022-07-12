@@ -1,0 +1,86 @@
+*, *::before, *::after {
+   box-sizing: border-box;
+   font-family: 'Jost', sans-serif;
+   margin: 0;
+   padding: 0;
+   cursor: default;
+}
+
+:root {
+    --color-background: #E4C1C2;
+    --color-foreground: #FEF2F2;
+    --color-middleground: #F53163;
+    --space-between-middle: 20px;
+}
+
+body {
+    background-color: var(--color-background);
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+
+
+/* /// TOP /// */
+.containerGrid {
+    display: flex;
+    flex-flow: column;
+    margin: 1em 3em;
+}
+.textHeader {
+    text-align: center;
+    font-size: 96px;
+}
+
+
+
+/* /// MIDDLE ///*/
+.justLine {
+    margin: var(--space-between-middle);
+
+    width: 2px;
+    min-height:max-content;
+    background-color: black;
+    z-index: 100;
+    stroke: 2px black;
+}
+
+
+
+
+/* /// BOTTOM /// */
+.containerBottom {
+    display: flex;
+    justify-content: space-around;
+}
+
+/*// BOTTOM: BOTTOMLEFT //*/
+.containerBottomLeft {
+    width: 50%;
+}
+.containerTask {
+    background-color: var(--color-foreground);
+
+    border-radius: 25px;
+    padding: 1em;
+}
+.taskTile{
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/*/ BOTTOMLEFT: SLIDER /*/
+.sliderProgress {
+    text-align: center;
+    font-size: 48px;
+    color: white;
+    text-shadow: 1px 1px black, 1px -1px black, -1px 1px black, -1px -1px black;
+}
+
+
+/*// BOTTOM: TASKLOG //*/
+.taskLog {
+    width: 50%;
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
