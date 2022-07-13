@@ -11,6 +11,7 @@
     --color-foreground: #FEF2F2;
     --color-middleground: #F53163;
     --space-between-middle: 20px;
+    --border-radius: 25px;
 }
 
 body {
@@ -60,22 +61,58 @@ body {
 }
 .containerTask {
     background-color: var(--color-foreground);
+    border-radius: var(--border-radius);
 
-    border-radius: 25px;
     padding: 1em;
+}
+.containerText {
+    position: relative;
 }
 .taskTile{
     font-size: 40px;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+.innerButton {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
 }
 /*/ BOTTOMLEFT: SLIDER /*/
 .sliderProgress {
+    position: relative;
     text-align: center;
     font-size: 48px;
     color: white;
     text-shadow: 1px 1px black, 1px -1px black, -1px 1px black, -1px -1px black;
+    margin-bottom: 29px;
 }
+.sliderBack {
+    background-color: var(--color-foreground);
+    border-radius: var(--border-radius);
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+.sliderFront {
+    background: linear-gradient(to left, var(--color-middleground), #ad2748);
+    border-radius: var(--border-radius);
+
+    position: inherit;
+    width: 0%;
+    height: 100%;
+    transition: width 2s ease-in-out;
+}
+.sliderProgress:hover .sliderFront {
+    width: 100%
+}
+
 
 
 /*// BOTTOM: TASKLOG //*/
