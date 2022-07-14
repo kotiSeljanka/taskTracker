@@ -74,6 +74,9 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-decoration: none;
 }
+.lineTrough {
+    text-decoration: line-through;
+}
 .innerButton {
     width: 10px;
     height: 10px;
@@ -107,10 +110,7 @@ body {
     position: inherit;
     width: 0%;
     height: 100%;
-    transition: width 2s ease-in-out;
-}
-.sliderProgress:hover .sliderFront {
-    width: 100%
+    transition: width 1s ease;
 }
 
 

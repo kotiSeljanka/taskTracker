@@ -1,29 +1,13 @@
 const progressBarElem = document.getElementById("sliderFront");
 const containerTaskElem = document.getElementById("containerTask");
 
-function toZero() {
-    progressBarElem.style.width = "0%";
-}
-
-function toHundred() {
-    progressBarElem.style.width = "100%";
-}
-
-function toSixty() {
-    progressBarElem.style.width = "60%";
-}
-
-function addStroke(elem) {
-    elem.style.textDecoration = "line-through";
-}
-
-const myTasks = [
-    "Do the dishes",
-    "Clean your room",
-    "Have a coffee",
-    "Greet neighbours",
-    "Fix chair",
-    "Improve living standards"
+let myTasks = [
+    {"index": 0, "task":"Do the dishes", "done": false},
+    {"index": 1, "task":"Clean your room", "done": false},
+    {"index": 2, "task":"Have a coffee", "done": false},
+    {"index": 3, "task":"Greet neighbours", "done": false},
+    {"index": 4, "task":"Fix chair", "done": false},
+    {"index": 5, "task":"Improve living standards", "done": false}
 ]
 
 myTasks.forEach( function(elem) {
@@ -37,8 +21,30 @@ myTasks.forEach( function(elem) {
     const taskTileElem = document.createElement("div");
     taskTileElem.classList.toggle("taskTile");
     taskTileElem.setAttribute("onclick", "addStroke(this)");
-    taskTileElem.innerText = '' + elem;
+    taskTileElem.setAttribute("taskindex", `${elem["index"]}`);
+    taskTileElem.innerText = '' + elem["task"];
     newChild.appendChild(taskTileElem);
 
     containerTaskElem.appendChild(newChild);
 })
+
+function addStroke(elem) {
+    elem.classList.toggle("lineTrough");
+    const elementIndex = elem.getAttribute('taskindex');
+    if (myTasks[elementIndex]["done"] === true) {
+        myTasks[elementIndex]["done"] = false;
+    } else {
+        myTasks[elementIndex]["done"] = true;
+    }
+    progressBarElem.style.width = `${calculateProgress()}%`
+}
+
+function calculateProgress() {
+    let totalTrue = 0;
+    myTasks.forEach( function(elem) {
+        if (elem["done"] === true) {
+            totalTrue++;
+        }
+    });
+    return Math.ceil((totalTrue / myTasks.length) * 100);
+}
